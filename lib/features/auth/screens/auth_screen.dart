@@ -2,6 +2,7 @@ import 'package:amazon_clone/common/widgets/custom_button.dart';
 import 'package:amazon_clone/common/widgets/custom_textfield.dart';
 import 'package:amazon_clone/constants/globalvariables.dart';
 import 'package:amazon_clone/features/auth/services/auth_service.dart';
+import 'package:amazon_clone/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -167,6 +168,8 @@ class _AuthScreenState extends State<AuthScreen> {
                           onTap: () {
                             if (_signInFormKey.currentState!.validate()) {
                               signInUser();
+                              Navigator.pushNamedAndRemoveUntil(context,
+                                  HomeScreen.routeName, (route) => false);
                             }
                           })
                     ]),
