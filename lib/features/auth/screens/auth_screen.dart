@@ -1,3 +1,4 @@
+import 'package:amazon_clone/common/widgets/bottom_bar.dart';
 import 'package:amazon_clone/common/widgets/custom_button.dart';
 import 'package:amazon_clone/common/widgets/custom_textfield.dart';
 import 'package:amazon_clone/constants/globalvariables.dart';
@@ -169,7 +170,7 @@ class _AuthScreenState extends State<AuthScreen> {
                             if (_signInFormKey.currentState!.validate()) {
                               signInUser();
                               Navigator.pushNamedAndRemoveUntil(context,
-                                  HomeScreen.routeName, (route) => false);
+                                  BottomBar.routeName, (route) => false);
                             }
                           })
                     ]),
