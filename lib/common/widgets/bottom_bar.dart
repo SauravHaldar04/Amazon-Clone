@@ -1,4 +1,5 @@
 import 'package:amazon_clone/constants/globalvariables.dart';
+import 'package:amazon_clone/features/accounts/account_screen.dart';
 import 'package:amazon_clone/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
@@ -13,7 +14,7 @@ class BottomBar extends StatefulWidget {
 
 class _BottomBarState extends State<BottomBar> {
   int _page = 0;
-  List<Widget> screens = [HomeScreen(), Placeholder(), Placeholder()];
+  List<Widget> screens = [HomeScreen(), AccountScreen(), Placeholder()];
   double bottomBarWidth = 42;
   double bottoBarBorderwidth = 5;
 
