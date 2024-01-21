@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:amazon_clone/secrets/secrets.dart';
 
-String uri = 'http://192.168.31.108:3000';
+String uri = 'http://$IP:3000';
 
 class GlobalVariables {
   // COLORS
