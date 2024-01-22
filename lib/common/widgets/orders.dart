@@ -40,7 +40,7 @@ class _OrdersState extends State<Orders> {
             )
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Container(
