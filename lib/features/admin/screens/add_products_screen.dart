@@ -4,6 +4,7 @@ import 'package:amazon_clone/common/widgets/custom_button.dart';
 import 'package:amazon_clone/common/widgets/custom_textfield.dart';
 import 'package:amazon_clone/constants/globalvariables.dart';
 import 'package:amazon_clone/constants/utils.dart';
+import 'package:amazon_clone/features/auth/services/admin_services.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,10 @@ class _AddProductsScreenState extends State<AddProductsScreen> {
 
   List<File> images = [];
 
+  AdminServices adminServices = AdminServices();
+
+  final _addProductFormKey = GlobalKey<FormState>();
+
   String defaultCategory = 'Mobiles';
 
   List<String> categories = [
@@ -33,6 +38,19 @@ class _AddProductsScreenState extends State<AddProductsScreen> {
     'Fashion',
     'Books'
   ];
+
+  void sellProduct() {
+    if (_addProductFormKey.currentState!.validate() && images.isNotEmpty) {
+      adminServices.sellProduct(
+          context: context,
+          name: productNamecontroller.text,
+          description: descriptioncontroller.text,
+          category: defaultCategory,
+          price: double.parse(pricecontroller.text),
+          quantity: double.parse(quantitycontroller.text),
+          images: images);
+    }
+  }
 
   void selectImages() async {
     var res = await pickImages();
@@ -68,6 +86,7 @@ class _AddProductsScreenState extends State<AddProductsScreen> {
       ),
       body: SingleChildScrollView(
         child: Form(
+          key: _addProductFormKey,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Column(
@@ -171,7 +190,12 @@ class _AddProductsScreenState extends State<AddProductsScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                CustomButton(text: 'Sell', onTap: () {})
+                CustomButton(
+                    text: 'Sell',
+                    onTap: () {
+                      sellProduct();
+                      Navigator.pop(context);
+                    })
               ],
             ),
           ),
