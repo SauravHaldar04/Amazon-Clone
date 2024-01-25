@@ -1,10 +1,9 @@
 const express = require('express')
-const adminRouter = express.Router
+const adminRouter = express.Router()
 const admin = require('../middlewares/admin')
-const authRouter = require('./auth')
 const Product = require('../models/product')
 
-authRouter.post('/admin/add-product',admin,async (req,res)=>{
+adminRouter.post('/admin/add-product',admin,async (req,res)=>{
     try {
         const {name,description,price,quantity,category,images} = req.body
         let product = new Product({
@@ -20,5 +19,15 @@ authRouter.post('/admin/add-product',admin,async (req,res)=>{
     } catch (e) {
         res.status(500).json({error:e.message})
     }
+});
+
+adminRouter.get('/admin/get-products',admin,async(req,res)=>{
+    try {
+        const products = await Product.find({});
+        res.json(products)
+    } catch (e) {
+        res.status(500).json({error:e.message})
+    }
 })
+
 module.exports = adminRouter
