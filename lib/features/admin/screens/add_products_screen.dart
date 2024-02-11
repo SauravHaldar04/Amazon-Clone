@@ -46,8 +46,8 @@ class _AddProductsScreenState extends State<AddProductsScreen> {
           name: productNamecontroller.text,
           description: descriptioncontroller.text,
           category: defaultCategory,
-          price: double.parse(pricecontroller.text),
-          quantity: double.parse(quantitycontroller.text),
+          price: pricecontroller.text,
+          quantity: int.parse(quantitycontroller.text),
           images: images);
     }
   }
@@ -195,6 +195,7 @@ class _AddProductsScreenState extends State<AddProductsScreen> {
                     onTap: () {
                       sellProduct();
                       Navigator.pop(context);
+                      setState(() {});
                     })
               ],
             ),

@@ -1,3 +1,4 @@
+import 'package:amazon_clone/common/widgets/singleproduct.dart';
 import 'package:amazon_clone/constants/loader.dart';
 import 'package:amazon_clone/features/admin/screens/add_products_screen.dart';
 import 'package:amazon_clone/features/admin/screens/admin_screen.dart';
@@ -17,6 +18,13 @@ class _ProductsScreenState extends State<ProductsScreen> {
   AdminServices adminServices = AdminServices();
 
   @override
+  void didUpdateWidget(covariant ProductsScreen oldWidget) {
+    // TODO: implement didUpdateWidget
+    fetchAllProducts();
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   void initState() {
     fetchAllProducts();
     super.initState();
@@ -24,7 +32,18 @@ class _ProductsScreenState extends State<ProductsScreen> {
 
   void fetchAllProducts() async {
     products = await adminServices.fetchAllProducts(context);
+    print(products);
     setState(() {});
+  }
+
+  void deleteProduct(Product product, int index) {
+    adminServices.deleteProduct(
+        context: context,
+        product: product,
+        onSuccess: () {
+          products!.removeAt(index);
+          setState(() {});
+        });
   }
 
   @override
@@ -42,9 +61,43 @@ class _ProductsScreenState extends State<ProductsScreen> {
                 }),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerFloat,
-            body: const Center(
-              child: Text('Products'),
+            body: GridView.builder(
+              itemCount: products!.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2),
+              itemBuilder: ((context, index) {
+                final productData = products![index];
+                return Column(
+                  children: [
+                    SizedBox(
+                      height: newMethod,
+                      child: SingleProduct(image: productData.images[0]),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              productData.name,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                            ),
+                          ),
+                          IconButton(
+                              onPressed: () =>
+                                  deleteProduct(productData, index),
+                              icon: const Icon(Icons.delete_outline))
+                        ],
+                      ),
+                    )
+                  ],
+                );
+              }),
             ),
           );
   }
+
+  double get newMethod => 140;
 }

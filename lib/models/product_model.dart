@@ -4,8 +4,8 @@ class Product {
   final String name;
   final String description;
   final String category;
-  final double price;
-  final double quantity;
+  final String price;
+  final int quantity;
   final List<String> images;
   final String? id;
 
@@ -35,8 +35,8 @@ class Product {
       name: map['name'] ?? '',
       description: map['description'] ?? '',
       category: map['category'] ?? '',
-      price: map['price'] ?? 0.0,
-      quantity: map['quantity'] ?? 0.0,
+      price: map['price'] ?? "",
+      quantity: map['quantity'] ?? 0,
       images: List<String>.from(map['images']),
     );
   }
