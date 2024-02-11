@@ -1,5 +1,6 @@
 import 'package:amazon_clone/constants/globalvariables.dart';
 import 'package:amazon_clone/constants/loader.dart';
+import 'package:amazon_clone/features/home/product-details/product_details_screen.dart';
 import 'package:amazon_clone/features/home/search/services/search_services.dart';
 import 'package:amazon_clone/features/home/search/widget/searched_product.dart';
 import 'package:amazon_clone/features/home/widgets/address_bar.dart';
@@ -128,8 +129,15 @@ class _SearchScreenState extends State<SearchScreen> {
                             itemBuilder: (context, index) {
                               return Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: SearchedProduct(
-                                    product: productList![index]),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, ProductDetailsScreen.routeName,
+                                        arguments: productList![index]);
+                                  },
+                                  child: SearchedProduct(
+                                      product: productList![index]),
+                                ),
                               );
                             }),
                       )
