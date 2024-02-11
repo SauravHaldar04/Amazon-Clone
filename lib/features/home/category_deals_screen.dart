@@ -1,6 +1,6 @@
 import 'package:amazon_clone/constants/globalvariables.dart';
 import 'package:amazon_clone/constants/loader.dart';
-import 'package:amazon_clone/features/home/product-details/product_details_screen.dart';
+import 'package:amazon_clone/features/home/product-details/screens/product_details_screen.dart';
 import 'package:amazon_clone/features/home/services/homeservices.dart';
 import 'package:amazon_clone/models/product_model.dart';
 import 'package:flutter/material.dart';

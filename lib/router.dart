@@ -3,7 +3,7 @@ import 'package:amazon_clone/features/admin/screens/add_products_screen.dart';
 import 'package:amazon_clone/features/auth/screens/auth_screen.dart';
 import 'package:amazon_clone/features/home/category_deals_screen.dart';
 import 'package:amazon_clone/features/home/home_screen.dart';
-import 'package:amazon_clone/features/home/product-details/product_details_screen.dart';
+import 'package:amazon_clone/features/home/product-details/screens/product_details_screen.dart';
 import 'package:amazon_clone/features/home/search/screens/search_screen.dart';
 import 'package:amazon_clone/models/product_model.dart';
 import 'package:flutter/material.dart';

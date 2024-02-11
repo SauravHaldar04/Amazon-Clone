@@ -1,6 +1,6 @@
 import 'package:amazon_clone/constants/globalvariables.dart';
 import 'package:amazon_clone/constants/loader.dart';
-import 'package:amazon_clone/features/home/product-details/product_details_screen.dart';
+import 'package:amazon_clone/features/home/product-details/screens/product_details_screen.dart';
 import 'package:amazon_clone/features/home/search/services/search_services.dart';
 import 'package:amazon_clone/features/home/search/widget/searched_product.dart';
 import 'package:amazon_clone/features/home/widgets/address_bar.dart';
